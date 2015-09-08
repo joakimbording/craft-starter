@@ -129,8 +129,8 @@ inq.prompt(questions, function (context, done) {
     .then(function () {
       var filename = '.templates/gitftp'
       return templateFile(context, filename).then(function (gitFtpConfig) {
-        log("\n");
-        log(chalk.blue('Add this to the end of', chalk.underline('.git/config')))
+        fs.appendFile('.git/config', gitFtpConfig)
+        log(chalk.blue('Added this to the end of', chalk.underline('.git/config')))
         log(gitFtpConfig);
       })
     })
